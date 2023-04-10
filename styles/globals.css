@@ -7,8 +7,3 @@
     @apply bg-teal-500;
   }
 }
-
-.formInput {
-  border: 1px solid grey;
-  border-radius: 5px;
-}

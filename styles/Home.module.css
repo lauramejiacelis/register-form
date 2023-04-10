@@ -1,5 +1,62 @@
 .mainContainer {
-  background-color: antiquewhite;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #93edc7, #1cd8d2);
+}
+
+.formContainer {
+  max-width: 700px;
+  width: 100%;
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 5px;
+}
+
+.formInput {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.btnGrad {
+  grid-column: 2 span;
+  margin-top: 20px;
+  background-image: linear-gradient(
+    to right,
+    #1cd8d2 0%,
+    #93edc7 51%,
+    #1cd8d2 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #575f5f;
+  font-weight: bold;
+  font-size: medium;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.btnGrad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btnGrad:disabled {
+  background-image: linear-gradient(
+    to right,
+    #464949 0%,
+    #5b6460 51%,
+    #262929 100%
+  );
 }
 
 /* Enable hover only on non-touch devices */
