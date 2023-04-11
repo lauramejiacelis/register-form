@@ -16,13 +16,13 @@
   border-radius: 5px;
 }
 
-.formContainer .title{
+.formContainer .title {
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
 
-.formContainer .title::before{
+.formContainer .title::before {
   content: '';
   position: absolute;
   left: 0;
@@ -32,26 +32,27 @@
   background: linear-gradient(135deg, #93edc7, #1cd8d2);
 }
 
-.userInfo{
+.userInfo {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
 
-.userInfo .inputBox{
+.userInfo .inputBox {
   margin-bottom: 15px;
   width: calc(100% / 2 - 25px);
 }
 
-.inputBox label{
+.inputBox label {
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.inputBox span{
+.inputBox span {
   color: orange;
+  font-size: small;
 }
 
 .userInfo .inputBox .formInput {
@@ -67,7 +68,7 @@
 }
 
 .userInfo .inputBox .formInput:focus,
-.userInfo .inputBox .formInput:valid{
+.userInfo .inputBox .formInput:valid {
   border-color: #1cd8d2;
 }
 

@@ -10,19 +10,20 @@ export const formSchema = Yup.object().shape({
   gender: Yup.string().required(isRequiredMessage),
   firstName: Yup.string().required(isRequiredMessage).min(3, tooShort),
   lastName: Yup.string().required(isRequiredMessage).min(3, tooShort),
+  dateOfBirth: Yup.date().required(isRequiredMessage),
   documentType: Yup.string().required(isRequiredMessage),
   documentNumber: Yup.string()
     .min(10, 'Must be at least 10 characters')
     .required(isRequiredMessage),
+  documentImage: Yup.string().required(isRequiredMessage),
   email: Yup.string().email().required(isRequiredMessage),
   password: Yup.string()
     .min(4, 'too short!')
     .max(10, 'too long')
     .required(isRequiredMessage),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password')],
-    'passwords do not match!'
-  ),
+  confirmPassword: Yup.string()
+    .required(isRequiredMessage)
+    .oneOf([Yup.ref('password')], 'passwords do not match!'),
   tel: Yup.number()
     .required(isRequiredMessage)
     .typeError(mustBeNumber)

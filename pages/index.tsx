@@ -7,14 +7,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import { VscCalendar } from 'react-icons/vsc';
+import DatePickerField from '@component/components/MyDatePicker';
 
 interface FormValues {
   country: string;
   gender: string;
   firstName: string;
   lastName: string;
+  dateOfBirth: Date | null | any;
   documentType: string;
   documentNumber: string;
+  documentImage: string;
   email: string;
   password: string;
   confirmPassword: string | null;
@@ -25,15 +28,17 @@ interface FormValues {
 }
 
 const Home = () => {
-  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+  const [dateOfBirth, setDateOfBirth] = useState<Date | any>(null);
 
   const initialValues: FormValues = {
     country: '',
     gender: '',
     firstName: '',
     lastName: '',
+    dateOfBirth: new Date(),
     documentType: '',
     documentNumber: '',
+    documentImage: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -64,7 +69,6 @@ const Home = () => {
         >
           {(formik) => (
             <Form>
-              
               <div className={styles.formContainer}>
                 <div className={styles.title}>Register Form</div>
                 <div className={styles.userInfo}>
@@ -136,6 +140,27 @@ const Home = () => {
                   </div>
 
                   <div className={styles.inputBox}>
+                    <label htmlFor="dateOfBirth">Date of Birth: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="dateOfBirth"
+                      component={DatePickerField}
+                      format="MM/DD/YYYY"
+                      //error={formik.errors.dateOfBirth}
+                      //onChange={(date) => setDateOfBirth(date)}
+                      selected={dateOfBirth}
+                    />
+                    {/* <DatePicker
+                      className={styles.formInput}
+                      name="dateOfBirth"
+                      onChange={(date) => setDateOfBirth(date)}
+                      selected={dateOfBirth}
+                    /> */}
+
+                    <ErrorMessage name="dateOfBirth" component="span" />
+                  </div>
+
+                  <div className={styles.inputBox}>
                     <label htmlFor="documentType">Document Type</label>
                     <Field
                       className={styles.formInput}
@@ -166,6 +191,18 @@ const Home = () => {
                       type="text"
                     />
                     <ErrorMessage name="documentNumber" component="span" />
+                  </div>
+
+                  <div className={styles.inputBox}>
+                    <label htmlFor="documentImage">Document Image: </label>
+                    <Field
+                      name="documentImage"
+                      as="input"
+                      error={formik.errors.documentImage}
+                      type="file"
+                      accept="image/png, image/jpeg"
+                    />
+                    <ErrorMessage name="documentImage" component="span" />
                   </div>
 
                   <div className={styles.inputBox}>
