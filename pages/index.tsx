@@ -64,186 +64,189 @@ const Home = () => {
         >
           {(formik) => (
             <Form>
+              
               <div className={styles.formContainer}>
-                <h1>Register Form</h1>
-                <div className={styles.inputBox}>
-                  <label htmlFor="country">Country</label>
-                  <Field
-                    className="formInput"
-                    name="country"
-                    as="select"
-                    label="country"
-                    type="text"
-                    error={formik.errors.country}
-                  >
-                    <option value="" selected disabled hidden>
-                      Select
-                    </option>
-                    {Countries.map((country, index) => (
-                      <option key={index} value={country.toLowerCase()}>
-                        {country}
+                <div className={styles.title}>Register Form</div>
+                <div className={styles.userInfo}>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="country">Country</label>
+                    <Field
+                      className={styles.formInput}
+                      name="country"
+                      as="select"
+                      label="country"
+                      type="text"
+                      error={formik.errors.country}
+                    >
+                      <option value="" selected disabled hidden>
+                        Select
                       </option>
-                    ))}
-                  </Field>
-                  <ErrorMessage name="country" component="span" />
-                </div>
-                <div className={styles.inputBox}>
-                  <label htmlFor="gender">Gender</label>
-                  <Field
-                    className="formInput"
-                    name="gender"
-                    as="select"
-                    label="gender"
-                    type="text"
-                    error={formik.errors.gender}
-                  >
-                    <option value="" selected disabled hidden>
-                      Select
-                    </option>
-                    {Genders.map((gender, index) => (
-                      <option key={index} value={gender.toLowerCase()}>
-                        {gender}
+                      {Countries.map((country, index) => (
+                        <option key={index} value={country.toLowerCase()}>
+                          {country}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage name="country" component="span" />
+                  </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="gender">Gender</label>
+                    <Field
+                      className={styles.formInput}
+                      name="gender"
+                      as="select"
+                      label="gender"
+                      type="text"
+                      error={formik.errors.gender}
+                    >
+                      <option value="" selected disabled hidden>
+                        Select
                       </option>
-                    ))}
-                  </Field>
-                  <ErrorMessage name="gender" component="span" />
-                </div>
+                      {Genders.map((gender, index) => (
+                        <option key={index} value={gender.toLowerCase()}>
+                          {gender}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage name="gender" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="firstName">First Name: </label>
-                  <Field
-                    className="formInput"
-                    name="firstName"
-                    as="input"
-                    type="text"
-                    error={formik.errors.firstName}
-                  />
-                  <ErrorMessage name="firstName" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="firstName">First Name: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="firstName"
+                      as="input"
+                      type="text"
+                      error={formik.errors.firstName}
+                    />
+                    <ErrorMessage name="firstName" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="lastName">Last Name: </label>
-                  <Field
-                    className="formInput"
-                    name="lastName"
-                    as="input"
-                    type="text"
-                    error={formik.errors.lastName}
-                  />
-                  <ErrorMessage name="lastName" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="lastName">Last Name: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="lastName"
+                      as="input"
+                      type="text"
+                      error={formik.errors.lastName}
+                    />
+                    <ErrorMessage name="lastName" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="documentType">Document Type</label>
-                  <Field
-                    className="formInput"
-                    name="documentType"
-                    as="select"
-                    type="text"
-                    error={formik.errors.documentType}
-                  >
-                    <option value="" selected disabled hidden>
-                      Select
-                    </option>
-                    {DocumentTypes.map((documentType, index) => (
-                      <option key={index} value={documentType.toLowerCase()}>
-                        {documentType}
+                  <div className={styles.inputBox}>
+                    <label htmlFor="documentType">Document Type</label>
+                    <Field
+                      className={styles.formInput}
+                      name="documentType"
+                      as="select"
+                      type="text"
+                      error={formik.errors.documentType}
+                    >
+                      <option value="" selected disabled hidden>
+                        Select
                       </option>
-                    ))}
-                  </Field>
-                  <ErrorMessage name="documentType" component="span" />
-                </div>
+                      {DocumentTypes.map((documentType, index) => (
+                        <option key={index} value={documentType.toLowerCase()}>
+                          {documentType}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage name="documentType" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="documentNumber">Document Number: </label>
-                  <Field
-                    className="formInput"
-                    name="documentNumber"
-                    as="input"
-                    error={formik.errors.documentNumber}
-                    type="text"
-                  />
-                  <ErrorMessage name="documentNumber" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="documentNumber">Document Number: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="documentNumber"
+                      as="input"
+                      error={formik.errors.documentNumber}
+                      type="text"
+                    />
+                    <ErrorMessage name="documentNumber" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="email">Email</label>
-                  <Field
-                    className="formInput"
-                    name="email"
-                    as="input"
-                    type="email"
-                    error={formik.errors.email}
-                  />
-                  <ErrorMessage name="email" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="email">Email</label>
+                    <Field
+                      className={styles.formInput}
+                      name="email"
+                      as="input"
+                      type="email"
+                      error={formik.errors.email}
+                    />
+                    <ErrorMessage name="email" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="password">Password</label>
-                  <Field
-                    className="formInput"
-                    name="password"
-                    as="input"
-                    type="password"
-                    error={formik.errors.password}
-                  />
-                  <ErrorMessage name="password" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="password">Password</label>
+                    <Field
+                      className={styles.formInput}
+                      name="password"
+                      as="input"
+                      type="password"
+                      error={formik.errors.password}
+                    />
+                    <ErrorMessage name="password" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="password">Confirm Password</label>
-                  <Field
-                    className="formInput"
-                    name="confirmPassword"
-                    as="input"
-                    type="password"
-                    error={formik.errors.confirmPassword}
-                  />
-                  <ErrorMessage name="confirmPassword" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="password">Confirm Password</label>
+                    <Field
+                      className={styles.formInput}
+                      name="confirmPassword"
+                      as="input"
+                      type="password"
+                      error={formik.errors.confirmPassword}
+                    />
+                    <ErrorMessage name="confirmPassword" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="tel">Tel: </label>
-                  <Field
-                    className="formInput"
-                    name="tel"
-                    as="input"
-                    error={formik.errors.tel}
-                  />
-                  <ErrorMessage name="tel" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="tel">Tel: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="tel"
+                      as="input"
+                      error={formik.errors.tel}
+                    />
+                    <ErrorMessage name="tel" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="cel">Cel: </label>
-                  <Field
-                    className="formInput"
-                    name="cel"
-                    as="input"
-                    error={formik.errors.cel}
-                  />
-                  <ErrorMessage name="cel" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="cel">Cel: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="cel"
+                      as="input"
+                      error={formik.errors.cel}
+                    />
+                    <ErrorMessage name="cel" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="address">Address: </label>
-                  <Field
-                    className="formInput"
-                    name="address"
-                    as="input"
-                    error={formik.errors.address}
-                  />
-                  <ErrorMessage name="address" component="span" />
-                </div>
+                  <div className={styles.inputBox}>
+                    <label htmlFor="address">Address: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="address"
+                      as="input"
+                      error={formik.errors.address}
+                    />
+                    <ErrorMessage name="address" component="span" />
+                  </div>
 
-                <div className={styles.inputBox}>
-                  <label htmlFor="zipCode">Zip Code: </label>
-                  <Field
-                    className="formInput"
-                    name="zipCode"
-                    as="input"
-                    error={formik.errors.zipCode}
-                  />
-                  <ErrorMessage name="zipCode" component="span" />
+                  <div className={styles.inputBox}>
+                    <label htmlFor="zipCode">Zip Code: </label>
+                    <Field
+                      className={styles.formInput}
+                      name="zipCode"
+                      as="input"
+                      error={formik.errors.zipCode}
+                    />
+                    <ErrorMessage name="zipCode" component="span" />
+                  </div>
                 </div>
 
                 <button
