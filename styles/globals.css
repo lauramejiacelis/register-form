@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .form {
-    @apply bg-teal-500;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }

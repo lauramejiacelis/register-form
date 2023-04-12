@@ -1,13 +1,14 @@
 import Head from 'next/head';
-import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik';
 import { formSchema } from '@component/utils/validationSchema';
 import { Countries, Genders, DocumentTypes } from '@component/utils/constants';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
-import { VscCalendar } from 'react-icons/vsc';
 import DatePickerField from '@component/components/MyDatePicker';
+import Modal from '@component/components/Modal';
+import useModal from '@component/hooks/useModal';
+import { BsFillClipboardCheckFill } from 'react-icons/bs';
 
 interface FormValues {
   country: string;
@@ -28,7 +29,9 @@ interface FormValues {
 }
 
 const Home = () => {
-  const [dateOfBirth, setDateOfBirth] = useState<Date | any>(null);
+  const [formData, setFormData] = useState<Object>({});
+  //const { resetForm } = useFormikContext();
+  const { isOpen, toggle } = useModal();
 
   const initialValues: FormValues = {
     country: '',
@@ -50,6 +53,9 @@ const Home = () => {
 
   const handleSubmit = (values: FormValues) => {
     console.log(values);
+    setFormData(values);
+    toggle();
+    //formik.resetForm();
   };
 
   return (
@@ -141,21 +147,13 @@ const Home = () => {
 
                   <div className={styles.inputBox}>
                     <label htmlFor="dateOfBirth">Date of Birth: </label>
-                    <Field
-                      className={styles.formInput}
-                      name="dateOfBirth"
-                      component={DatePickerField}
-                      format="MM/DD/YYYY"
-                      //error={formik.errors.dateOfBirth}
-                      //onChange={(date) => setDateOfBirth(date)}
-                      selected={dateOfBirth}
-                    />
-                    {/* <DatePicker
-                      className={styles.formInput}
-                      name="dateOfBirth"
-                      onChange={(date) => setDateOfBirth(date)}
-                      selected={dateOfBirth}
-                    /> */}
+                    <div>
+                      <Field
+                        className={styles.formInput}
+                        name="dateOfBirth"
+                        component={DatePickerField}
+                      />
+                    </div>
 
                     <ErrorMessage name="dateOfBirth" component="span" />
                   </div>
@@ -297,6 +295,15 @@ const Home = () => {
             </Form>
           )}
         </Formik>
+        <Modal isOpen={isOpen} toggle={toggle}>
+          <div className={styles.successMessage}>
+            <p>Your data was sent successfully!!!</p>
+            <div>
+              <BsFillClipboardCheckFill className={styles.icon} />
+            </div>
+          </div>
+        </Modal>
+        ;
       </div>
     </>
   );

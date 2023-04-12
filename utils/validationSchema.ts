@@ -10,15 +10,17 @@ export const formSchema = Yup.object().shape({
   gender: Yup.string().required(isRequiredMessage),
   firstName: Yup.string().required(isRequiredMessage).min(3, tooShort),
   lastName: Yup.string().required(isRequiredMessage).min(3, tooShort),
-  dateOfBirth: Yup.date().required(isRequiredMessage),
+  dateOfBirth: Yup.date()
+    .required(isRequiredMessage)
+    .max(new Date(Date.now() - 567648000000), 'You must be at least 18 years'),
   documentType: Yup.string().required(isRequiredMessage),
   documentNumber: Yup.string()
-    .min(10, 'Must be at least 10 characters')
+    .min(8, 'Must be at least 8 characters')
     .required(isRequiredMessage),
   documentImage: Yup.string().required(isRequiredMessage),
   email: Yup.string().email().required(isRequiredMessage),
   password: Yup.string()
-    .min(4, 'too short!')
+    .min(6, 'too short!')
     .max(10, 'too long')
     .required(isRequiredMessage),
   confirmPassword: Yup.string()
@@ -36,6 +38,9 @@ export const formSchema = Yup.object().shape({
   zipCode: Yup.number()
     .required(isRequiredMessage)
     .typeError('Zip code can only be a number')
-    .min(10000, 'Must be exactly 5 characters')
-    .max(99999, 'Must be exactly 5 characters'),
+    .test(
+      'len',
+      'Must be exactly 5 characters',
+      (val) => val.toString().length === 5
+    ),
 });
